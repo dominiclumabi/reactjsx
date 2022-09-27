@@ -3,6 +3,10 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+let user = {
+  avatar: "human.png"
+}
+
 function Heading(){
   return(
     <>
@@ -14,7 +18,7 @@ function Heading(){
 function List(){
   return(
     <>
-    <ul>
+    <ul className="order-list">
       <li>Burger - 25</li>
       <li>Fries - 35</li>
       <li>Drinks - 20</li>
@@ -23,12 +27,55 @@ function List(){
   );
 }
 
+function Login(){
+  return(
+    <>
+    <h1>Please login your account</h1>
+    <input type= "text" />
+    <button>Login</button>
+    </>
+  );
+}
+
+function UserDetails({ props }) {
+  return (
+    <>
+      <img src={user.avatar} alt="avatar" />
+    </>
+  );
+}
+
+
+
 function App() {
+
+  let isLoggedIn = true;
+
+  if (isLoggedIn) {
+    return(
+    <> 
+        <UserDetails props />
+        <Header />
+        <Heading />
+        <List />
+        <Footer />
+    
+    </>);
+  }
+
+  else{
+    return(
+      <>
+        <Login />
+      </>
+    );
+  }
 
  return(
   <>
   <Header />
   <Heading />
+  <Login />
   <List />
   <Footer />
   </>
